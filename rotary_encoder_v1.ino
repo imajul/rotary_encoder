@@ -1,7 +1,7 @@
 #include "SevenSegmentTM1637.h"
 
 volatile unsigned long temp, counter = 0;
-int aux, bias = 0; // distancia en cm entre el encoder y el borde de la tela
+int aux, bias = 0; 
 uint8_t texto[4];
 
 #define PIN_CLK 9       // TM1637 CLK pin 
@@ -12,6 +12,7 @@ uint8_t texto[4];
 #define MODE_PIN 7
 #define MODO_CORTAR_LED 4
 #define MODO_MEDIR_LED 5
+#define BIAS 30        // distancia en cm entre el encoder y el borde de la tela    
 
 typedef enum
 {
@@ -108,7 +109,7 @@ void loop()
         {
           case CORTAR:
             modo = MEDIR;
-            bias = 20;
+            bias = BIAS;
             digitalWrite(MODO_MEDIR_LED, HIGH);
             digitalWrite(MODO_CORTAR_LED, LOW);
             break;
